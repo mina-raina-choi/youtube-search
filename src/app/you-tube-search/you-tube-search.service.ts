@@ -1,12 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import {
-  HttpClient,
-  HttpRequest,
-  HttpHeaders
-} from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SearchResult } from './search-result.model';
+import 'rxjs/add/operator/map'
 
 export const YOUTUBE_API_KEY =
   'AIzaSyBQZ7PBoWq1euSX0l9oUhtI5OTY2PZCvds';
@@ -33,7 +29,7 @@ export class YouTubeSearchService {
 
         const queryUrl = `${this.apiUrl}?${params}`;
 
-        return this.http.get(queryUrl).pipe(response=> {
+        return this.http.get(queryUrl).map(response=> {
             return <any>response['items'].map(item => {
                 console.log("raw item", item )
                 return new SearchResult({
