@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switch';
 
 
 @Component({
-    selector: 'app-saerch-box',
+    selector: 'app-search-box',
     template: `
         <input type="text" class="form-control" placeholder="Search" autofocus>
     `
